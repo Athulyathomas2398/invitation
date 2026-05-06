@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Valaikappu Invitation</title>
 
+<!-- Better font for rest -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <style>
 * {
     margin: 0;
@@ -13,7 +18,7 @@
 }
 
 body {
-    font-family: 'Georgia', serif;
+    font-family: 'Lobster Two', sans-serif;
     background: linear-gradient(135deg, #ffe6f7, #e6f7ff, #fff3cd);
     color: #5a2a4a;
     text-align: center;
@@ -25,31 +30,43 @@ body {
     padding: 20px 12px;
 }
 
-/* Title */
-h1 {
+/* Title (unchanged font) */
+.title {
+    font-family: 'Georgia', serif; /* back to original style */
     font-size: 28px;
     color: #d81b60;
-    margin: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
 }
 
+.flower {
+    font-size: 20px;
+}
+
+/* Subtitle */
 h2 {
     font-size: 14px;
     color: #6a1b9a;
+    margin-top: 5px;
 }
 
 /* Names */
 .names {
-    margin: 12px 0;
+    margin: 14px 0;
     font-size: 20px;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 .names span {
     color: #ff4081;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 22px;
 }
 
-/* Subtitle */
+/* Subtitle text */
 .subtitle {
     font-size: 14px;
     color: #8e24aa;
@@ -158,6 +175,17 @@ footer {
         transform: translateY(110vh);
     }
 }
+
+/* Mobile Fix */
+@media (max-width: 480px) {
+    .title {
+        font-size: 24px;
+    }
+
+    .flower {
+        font-size: 16px;
+    }
+}
 </style>
 </head>
 
@@ -165,7 +193,12 @@ footer {
 
 <div class="container">
 
-<h1>🌸7th Month Ceremony🌸</h1>
+<h1 class="title">
+    <span class="flower">🌸</span>
+    7th Month Ceremony
+    <span class="flower">🌸</span>
+</h1>
+
 <h2>A joyful celebration awaits</h2>
 
 <div class="names">
@@ -179,19 +212,18 @@ footer {
 
 <!-- Photo -->
 <div class="photo-wrapper">
-    <img src="photo.jpg" alt="Parents Photo">
+    <img src="photo.jpg" alt="Photo">
 </div>
 
 <div class="card">
 
     <p class="message">
-        We warmly invite you to be part of this special day filled with love, laughter, and happiness💖
+        We warmly invite you to be part of this special day filled with love, laughter, and happiness 💖
     </p>
 
     <p class="details"><strong>Date:</strong> May 10, 2026</p>
     <p class="details"><strong>Time:</strong> 11:30 AM</p>
 
-    <!-- Small Countdown -->
     <div class="countdown">
         <div class="time-box"><span id="days">0</span>Days</div>
         <div class="time-box"><span id="hours">0</span>Hrs</div>
@@ -201,7 +233,7 @@ footer {
 
 </div>
 
-<footer>Waiting to celebrate together💕</footer>
+<footer>Waiting to celebrate together 💕</footer>
 
 </div>
 
@@ -229,7 +261,7 @@ setInterval(() => {
 
 }, 1000);
 
-// Falling flowers + hearts
+// Falling animation (smaller for mobile)
 const items = ["🌸","🌺","💖","💕"];
 for (let i = 0; i < 20; i++) {
     let el = document.createElement("div");
@@ -237,7 +269,7 @@ for (let i = 0; i < 20; i++) {
     el.innerText = items[Math.floor(Math.random()*items.length)];
     el.style.left = Math.random()*100 + "vw";
     el.style.animationDuration = (5 + Math.random()*5) + "s";
-    el.style.fontSize = (14 + Math.random()*10) + "px";
+    el.style.fontSize = (10 + Math.random()*6) + "px";
     document.body.appendChild(el);
 }
 </script>
