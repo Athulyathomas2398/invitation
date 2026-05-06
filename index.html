@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valaikappu Invitation</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    background: linear-gradient(135deg, #ffe6f7, #e6f7ff, #fff3cd);
+    color: #5a2a4a;
+    text-align: center;
+}
+
+/* Container */
+.container {
+    padding: 20px 12px;
+}
+
+/* Title */
+h1 {
+    font-size: 28px;
+    color: #d81b60;
+    margin: 10px 0;
+}
+
+h2 {
+    font-size: 14px;
+    color: #6a1b9a;
+}
+
+/* Names */
+.names {
+    margin: 12px 0;
+    font-size: 20px;
+    line-height: 1.5;
+}
+
+.names span {
+    color: #ff4081;
+    font-weight: bold;
+}
+
+/* Cute subtitle */
+.subtitle {
+    font-size: 14px;
+    color: #8e24aa;
+    margin-bottom: 10px;
+}
+
+/* Photo glow */
+.photo-wrapper {
+    position: relative;
+    display: inline-block;
+    margin: 15px 0;
+}
+
+.photo-wrapper::before {
+    content: "";
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    background: radial-gradient(circle, #ff80ab55, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: glow 3s infinite ease-in-out;
+}
+
+.photo-wrapper img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 5px solid #ff80ab;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    position: relative;
+}
+
+/* Card */
+.card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 18px;
+    max-width: 420px;
+    margin: auto;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+/* Message */
+.message {
+    font-size: 14px;
+    margin: 10px 0;
+    color: #7b1fa2;
+}
+
+/* Details */
+.details {
+    font-size: 14px;
+    margin: 6px 0;
+}
+
+/* Button */
+.map-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 7px 14px;
+    font-size: 13px;
+    background: linear-gradient(90deg, #ff6fa1, #6ec6ff);
+    color: white;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+/* Small countdown */
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 12px;
+}
+
+.time-box {
+    background: linear-gradient(135deg, #b388ff, #64b5f6);
+    color: white;
+    padding: 6px 4px;
+    border-radius: 8px;
+    font-size: 10px;
+    min-width: 50px;
+}
+
+.time-box span {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #6a1b9a;
+}
+
+/* Animations */
+@keyframes glow {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+    50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🌸 7th Month Ceremony 🌸</h1>
+<h2>A joyful celebration awaits</h2>
+
+<div class="names">
+    For our little bundle of joy 💕 <br>
+    <span>Athulya</span> & <span>Athul</span>
+</div>
+
+<div class="subtitle">
+    A sweet moment to cherish together
+</div>
+
+<!-- Photo -->
+<div class="photo-wrapper">
+    <img src="photo.jpg" alt="Photo">
+</div>
+
+<div class="card">
+
+    <p class="message">
+        We warmly invite you to be part of this special day filled with love, laughter, and happiness 💖
+    </p>
+
+    <p class="details"><strong>Date:</strong> May 10, 2026</p>
+    <p class="details"><strong>Time:</strong> 11:30 AM</p>
+
+    <a class="map-btn" href="https://maps.app.goo.gl/3vjg1vxUwedJphaT8?g_st=awb" target="_blank">
+        View Location 📍
+    </a>
+
+    <!-- Smaller Countdown -->
+    <div class="countdown">
+        <div class="time-box"><span id="days">0</span>Days</div>
+        <div class="time-box"><span id="hours">0</span>Hrs</div>
+        <div class="time-box"><span id="minutes">0</span>Min</div>
+        <div class="time-box"><span id="seconds">0</span>Sec</div>
+    </div>
+
+</div>
+
+<footer>Waiting to celebrate together 💕</footer>
+
+</div>
+
+<script>
+// Countdown
+const eventDate = new Date("May 10, 2026 11:30:00").getTime();
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if (distance < 0) return;
+
+    document.getElementById("days").innerText =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
+
+    document.getElementById("hours").innerText =
+        Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+
+    document.getElementById("minutes").innerText =
+        Math.floor((distance % (1000*60*60)) / (1000*60));
+
+    document.getElementById("seconds").innerText =
+        Math.floor((distance % (1000*60)) / 1000);
+
+}, 1000);
+</script>
+
+</body>
+</html>
