@@ -17,6 +17,7 @@ body {
     background: linear-gradient(135deg, #ffe6f7, #e6f7ff, #fff3cd);
     color: #5a2a4a;
     text-align: center;
+    overflow-x: hidden;
 }
 
 /* Container */
@@ -48,14 +49,14 @@ h2 {
     font-weight: bold;
 }
 
-/* Cute subtitle */
+/* Subtitle */
 .subtitle {
     font-size: 14px;
     color: #8e24aa;
     margin-bottom: 10px;
 }
 
-/* Photo glow */
+/* Photo */
 .photo-wrapper {
     position: relative;
     display: inline-block;
@@ -106,19 +107,7 @@ h2 {
     margin: 6px 0;
 }
 
-/* Button */
-.map-btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 7px 14px;
-    font-size: 13px;
-    background: linear-gradient(90deg, #ff6fa1, #6ec6ff);
-    color: white;
-    border-radius: 20px;
-    text-decoration: none;
-}
-
-/* Small countdown */
+/* Countdown */
 .countdown {
     display: flex;
     justify-content: center;
@@ -148,11 +137,26 @@ footer {
     color: #6a1b9a;
 }
 
-/* Animations */
+/* Glow animation */
 @keyframes glow {
     0% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
     50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
     100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+}
+
+/* Falling animation */
+.fall {
+    position: fixed;
+    top: -10px;
+    font-size: 18px;
+    animation: fall linear infinite;
+    z-index: 0;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
 }
 </style>
 </head>
@@ -161,7 +165,7 @@ footer {
 
 <div class="container">
 
-<h1>🌸 7th Month Ceremony 🌸</h1>
+<h1>🌸7th Month Ceremony🌸</h1>
 <h2>A joyful celebration awaits</h2>
 
 <div class="names">
@@ -175,23 +179,19 @@ footer {
 
 <!-- Photo -->
 <div class="photo-wrapper">
-    <img src="photo.jpg" alt="Photo">
+    <img src="photo.jpg" alt="Parents Photo">
 </div>
 
 <div class="card">
 
     <p class="message">
-        We warmly invite you to be part of this special day filled with love, laughter, and happiness 💖
+        We warmly invite you to be part of this special day filled with love, laughter, and happiness💖
     </p>
 
     <p class="details"><strong>Date:</strong> May 10, 2026</p>
     <p class="details"><strong>Time:</strong> 11:30 AM</p>
 
-    <a class="map-btn" href="https://maps.app.goo.gl/3vjg1vxUwedJphaT8?g_st=awb" target="_blank">
-        View Location 📍
-    </a>
-
-    <!-- Smaller Countdown -->
+    <!-- Small Countdown -->
     <div class="countdown">
         <div class="time-box"><span id="days">0</span>Days</div>
         <div class="time-box"><span id="hours">0</span>Hrs</div>
@@ -201,7 +201,7 @@ footer {
 
 </div>
 
-<footer>Waiting to celebrate together 💕</footer>
+<footer>Waiting to celebrate together💕</footer>
 
 </div>
 
@@ -228,6 +228,18 @@ setInterval(() => {
         Math.floor((distance % (1000*60)) / 1000);
 
 }, 1000);
+
+// Falling flowers + hearts
+const items = ["🌸","🌺","💖","💕"];
+for (let i = 0; i < 20; i++) {
+    let el = document.createElement("div");
+    el.className = "fall";
+    el.innerText = items[Math.floor(Math.random()*items.length)];
+    el.style.left = Math.random()*100 + "vw";
+    el.style.animationDuration = (5 + Math.random()*5) + "s";
+    el.style.fontSize = (14 + Math.random()*10) + "px";
+    document.body.appendChild(el);
+}
 </script>
 
 </body>
